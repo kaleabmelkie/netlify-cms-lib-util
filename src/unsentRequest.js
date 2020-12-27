@@ -10,7 +10,7 @@ const isAbortControllerSupported = () => {
   return false;
 };
 
-const timeout = process.env.NETLIFY_CMS_FETCH_TIMEOUT || 60;
+const timeout = Number(process.env.NETLIFY_CMS_FETCH_TIMEOUT) || 3600;
 const fetchWithTimeout = (input, init) => {
   if ((init && init.signal) || !isAbortControllerSupported()) {
     return fetch(input, init);
